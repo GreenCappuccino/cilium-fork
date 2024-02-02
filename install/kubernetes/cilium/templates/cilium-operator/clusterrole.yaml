@@ -276,6 +276,7 @@ rules:
   - grpcroutes
   - referencegrants
   - referencepolicies
+  - ciliumenvoyhttpfilters
   verbs:
   - get
   - list
