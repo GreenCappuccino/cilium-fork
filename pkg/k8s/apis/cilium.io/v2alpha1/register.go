@@ -104,6 +104,11 @@ const (
 	CPIPPluralName     = "ciliumpodippools"
 	CPIPKindDefinition = "CiliumPodIPPool"
 	CPIPName           = CPIPPluralName + "." + CustomResourceDefinitionGroup
+
+	// CiliumEnvoyHTTPFilter (CEHF)
+	CEHFPluralName     = "ciliumenvoyhttpfilters"
+	CEHPKindDefinition = "CiliumEnvoyHTTPFilter"
+	CEHPName           = CEHFPluralName + "." + CustomResourceDefinitionGroup
 )
 
 // SchemeGroupVersion is group version used to register these objects
@@ -161,6 +166,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&CiliumL2AnnouncementPolicyList{},
 		&CiliumPodIPPool{},
 		&CiliumPodIPPoolList{},
+		&CiliumEnvoyHTTPFilter{},
+		&CiliumEnvoyHTTPFilterList{},
 
 		// new BGP types
 		&CiliumBGPClusterConfig{},

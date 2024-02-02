@@ -36,6 +36,18 @@ type CiliumEnvoyHTTPFilter struct {
 	Spec CiliumEnvoyHTTPFilterSpec `json:"spec,omitempty"`
 }
 
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +deepequal-gen=false
+
+// CiliumEnvoyHTTPFilterList is a list of CiliumEnvoyHTTPFilter objects.
+type CiliumEnvoyHTTPFilterList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata"`
+
+	// Items is a list of CiliumEnvoyConfig.
+	Items []CiliumEnvoyHTTPFilter `json:"items"`
+}
+
 type CiliumEnvoyHTTPFilterSpec struct {
 	// HTTPFilters is a list of HTTPFilter to be inserted in the HTTP connection manager filter chain
 	//
