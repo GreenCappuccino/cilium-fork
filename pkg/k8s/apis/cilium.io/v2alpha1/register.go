@@ -107,8 +107,8 @@ const (
 
 	// CiliumEnvoyHTTPFilter (CEHF)
 	CEHFPluralName     = "ciliumenvoyhttpfilters"
-	CEHPKindDefinition = "CiliumEnvoyHTTPFilter"
-	CEHPName           = CEHFPluralName + "." + CustomResourceDefinitionGroup
+	CEHFKindDefinition = "CiliumEnvoyHTTPFilter"
+	CEHFName           = CEHFPluralName + "." + CustomResourceDefinitionGroup
 )
 
 // SchemeGroupVersion is group version used to register these objects

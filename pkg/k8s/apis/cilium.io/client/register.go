@@ -94,6 +94,9 @@ const (
 
 	// CPIPCRDName is the full name of the CiliumPodIPPool CRD.
 	CPIPCRDName = k8sconstv2alpha1.CPIPKindDefinition + "/" + k8sconstv2alpha1.CustomResourceDefinitionVersion
+
+	// CEHFCRDName is the full name of the CiliumEnvoyHTTPFilter CRD.
+	CEHFCRDName = k8sconstv2alpha1.CEHFKindDefinition + "/" + k8sconstv2alpha1.CustomResourceDefinitionVersion
 )
 
 // log is the k8s package logger object.
@@ -284,6 +287,9 @@ var (
 
 	//go:embed crds/v2alpha1/ciliumpodippools.yaml
 	crdsv2Alpha1CiliumPodIPPools []byte
+
+	//go:emved crds/v2alpha1/ciliumenvoyhttpfilter.yaml
+	crdsv2Alpha1CiliumEnvoyHTTPFilters []byte
 )
 
 // GetPregeneratedCRD returns the pregenerated CRD based on the requested CRD
