@@ -23,6 +23,7 @@ type CiliumV2alpha1Interface interface {
 	CiliumBGPPeeringPoliciesGetter
 	CiliumCIDRGroupsGetter
 	CiliumEndpointSlicesGetter
+	CiliumEnvoyHTTPFiltersGetter
 	CiliumL2AnnouncementPoliciesGetter
 	CiliumLoadBalancerIPPoolsGetter
 	CiliumNodeConfigsGetter
@@ -64,6 +65,10 @@ func (c *CiliumV2alpha1Client) CiliumCIDRGroups() CiliumCIDRGroupInterface {
 
 func (c *CiliumV2alpha1Client) CiliumEndpointSlices() CiliumEndpointSliceInterface {
 	return newCiliumEndpointSlices(c)
+}
+
+func (c *CiliumV2alpha1Client) CiliumEnvoyHTTPFilters(namespace string) CiliumEnvoyHTTPFilterInterface {
+	return newCiliumEnvoyHTTPFilters(c, namespace)
 }
 
 func (c *CiliumV2alpha1Client) CiliumL2AnnouncementPolicies() CiliumL2AnnouncementPolicyInterface {

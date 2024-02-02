@@ -47,6 +47,10 @@ func (c *FakeCiliumV2alpha1) CiliumEndpointSlices() v2alpha1.CiliumEndpointSlice
 	return &FakeCiliumEndpointSlices{c}
 }
 
+func (c *FakeCiliumV2alpha1) CiliumEnvoyHTTPFilters(namespace string) v2alpha1.CiliumEnvoyHTTPFilterInterface {
+	return &FakeCiliumEnvoyHTTPFilters{c, namespace}
+}
+
 func (c *FakeCiliumV2alpha1) CiliumL2AnnouncementPolicies() v2alpha1.CiliumL2AnnouncementPolicyInterface {
 	return &FakeCiliumL2AnnouncementPolicies{c}
 }

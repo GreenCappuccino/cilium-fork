@@ -37,6 +37,14 @@ type CiliumCIDRGroupListerExpansion interface{}
 // CiliumEndpointSliceLister.
 type CiliumEndpointSliceListerExpansion interface{}
 
+// CiliumEnvoyHTTPFilterListerExpansion allows custom methods to be added to
+// CiliumEnvoyHTTPFilterLister.
+type CiliumEnvoyHTTPFilterListerExpansion interface{}
+
+// CiliumEnvoyHTTPFilterNamespaceListerExpansion allows custom methods to be added to
+// CiliumEnvoyHTTPFilterNamespaceLister.
+type CiliumEnvoyHTTPFilterNamespaceListerExpansion interface{}
+
 // CiliumL2AnnouncementPolicyListerExpansion allows custom methods to be added to
 // CiliumL2AnnouncementPolicyLister.
 type CiliumL2AnnouncementPolicyListerExpansion interface{}
