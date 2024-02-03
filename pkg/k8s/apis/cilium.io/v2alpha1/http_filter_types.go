@@ -57,7 +57,7 @@ type CiliumEnvoyHTTPFilterSpec struct {
 
 // HTTPFilter is an Envoy extensions.filters.network.http_connection_manager.v3.HttpFilter
 //
-// +kubebuilder:validation:XValidation:message="HTTPFilter can only have typedConfig or configDiscovery, not both",rule="self.exists_one(self.typedConfig, self.configDiscovery)"
+// +kubebuilder:validation:XValidation:message="HTTPFilter must have exactly 1 of typedConfig or configDiscovery",rule="(has(self.typedConfig) || has(self.configDiscovery)) && !(has(self.typedConfig) && has(self.configDiscovery))"
 type HTTPFilter struct {
 	// Name is the name of the filter configuration.
 	//
@@ -66,14 +66,12 @@ type HTTPFilter struct {
 	// TypedConfig is filter specific configuration which depends on the filter being instantiated.
 	//
 	// +kubebuilder:validation:Optional
-	// +kubebuilder:pruning:PreserveUnknownFields
 	TypedConfig TypedConfig `json:"typedConfig,omitempty"`
 	// ConfigDiscovery is a configuration source specifier for an extension configuration discovery service.
 	//
 	// Warning: Note that this is not validated extensively for now.
 	//
 	// +kubebuilder:validation:Optional
-	// +kubebuilder:pruning:PreserveUnknownFields
 	ConfigDiscovery ExtensionConfigSource `json:"configDiscovery,omitempty"`
 	// IsOptional, if set to true, allows clients that do not support this filter to ignore the filter but otherwise accept the config. Otherwise, clients that do not support this filter must reject the config.
 	//

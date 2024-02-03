@@ -49,13 +49,11 @@ spec:
                   description: HTTPFilter is an Envoy extensions.filters.network.http_connection_manager.v3.HttpFilter
                   properties:
                     configDiscovery:
-                      allOf:
-                      - x-kubernetes-preserve-unknown-fields: true
-                      - x-kubernetes-preserve-unknown-fields: true
                       description: "ConfigDiscovery is a configuration source specifier
                         for an extension configuration discovery service. \n Warning:
                         Note that this is not validated extensively for now."
                       type: object
+                      x-kubernetes-preserve-unknown-fields: true
                     disabled:
                       description: Disabled, if set to true, makes the filter disabled
                         by default, and must be explicitly enabled by setting per
@@ -71,19 +69,17 @@ spec:
                       description: Name is the name of the filter configuration.
                       type: string
                     typedConfig:
-                      allOf:
-                      - x-kubernetes-preserve-unknown-fields: true
-                      - x-kubernetes-preserve-unknown-fields: true
                       description: TypedConfig is filter specific configuration which
                         depends on the filter being instantiated.
                       type: object
+                      x-kubernetes-preserve-unknown-fields: true
                   required:
                   - name
                   type: object
                   x-kubernetes-validations:
-                  - message: HTTPFilter can only have typedConfig or configDiscovery,
-                      not both
-                    rule: self.exists_one(self.typedConfig, self.configDiscovery)
+                  - message: HTTPFilter must have exactly 1 of typedConfig or configDiscovery
+                    rule: (has(self.typedConfig) || has(self.configDiscovery)) &&
+                      !(has(self.typedConfig) && has(self.configDiscovery))
                 type: array
             type: object
         required:
